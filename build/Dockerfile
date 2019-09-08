@@ -29,7 +29,9 @@ ADD ./files/.vimrc /root/.vimrc
 # But this sets up simlink for gitconfig
 RUN mkdir -p /docker/container_files/root && \ 
 touch /docker/container_files/root/.gitconfig && \
-ln -s /docker/container_files/root/.gitconfig /root
+touch /docker/container_files/root/.bash_history && \
+ln -s /docker/container_files/root/.gitconfig /root && \
+ln -s /docker/container_files/root/.bash_history /root
 
 
 
