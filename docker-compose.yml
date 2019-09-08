@@ -13,8 +13,8 @@ x-ambition-common:
         privileged: true
         volumes:
            - easyenv_opt:/opt:delegated
-           - ./container_files/ssh:/.ssh:delegated
-           - ./container_files/vim:/.vim:delegated
+           - ./container_files/ssh:/root/.ssh:delegated
+           - ./container_files/vim:/root/.vim:delegated
            - ~:/host:delegated
            - ./build:/build:delegated
            ##################################################################

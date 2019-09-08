@@ -7,7 +7,7 @@ FROM ubuntu:18.04
 RUN apt-get update --fix-missing && \
     apt-get -y install locales python-pip python-dev vim curl tree \
     wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 \
-    git mercurial subversion nano
+    git mercurial subversion nano ssh
 
 # set utf8 default locale lang
 RUN locale-gen en_US.UTF-8
@@ -24,10 +24,17 @@ ADD ./files/.bash_profile /root/.bash_profile
 ADD ./files/.bashrc /root/.bashrc
 ADD ./files/.inputrc /root/.inputrc
 ADD ./files/.vimrc /root/.vimrc
-ADD ./files/install_conda.sh /root/install_conda.sh
+
+# This directory will get overridden by volume mount
+# But this sets up simlink for gitconfig
+RUN mkdir /build && \
+touch /build/.gitconfig && \
+ln -s /build/.gitconfig /root
 
 
-# Install conda
+
+
+# Prepare for conda intall
 RUN mkdir $HOME/.conda && \
     echo "conda activate viz" >> ~/.bashrc
 
