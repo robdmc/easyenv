@@ -27,9 +27,9 @@ ADD ./files/.vimrc /root/.vimrc
 
 # This directory will get overridden by volume mount
 # But this sets up simlink for gitconfig
-RUN mkdir /build && \
-touch /build/.gitconfig && \
-ln -s /build/.gitconfig /root
+RUN mkdir -p /docker/container_files/root && \ 
+touch /docker/container_files/root/.gitconfig && \
+ln -s /docker/container_files/root/.gitconfig /root
 
 
 

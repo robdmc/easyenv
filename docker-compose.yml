@@ -16,7 +16,7 @@ x-ambition-common:
            - ./container_files/ssh:/root/.ssh:delegated
            - ./container_files/vim:/root/.vim:delegated
            - ~:/host:delegated
-           - ./build:/build:delegated
+           - .:/docker:delegated
            ##################################################################
            # Replace this with
            # projects/path/on/your/computer:/root/projects
