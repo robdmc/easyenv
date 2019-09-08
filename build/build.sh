@@ -1,9 +1,12 @@
-I want to set up bash history saving
-
-I want to set up good paths for projects
-
-I want to set up git init stuff with ssh which means Ill likely need ssh 
-volume linked from host
+docker volume erase easyenv_opt 2>/dev/null || 1
+docker volume create easyenv_opt
+docker build -t easyenv .
+#I want to set up bash history saving
+#
+#I want to set up good paths for projects
+#
+#I want to set up git init stuff with ssh which means Ill likely need ssh 
+#volume linked from host
 
 
 ## Install conda

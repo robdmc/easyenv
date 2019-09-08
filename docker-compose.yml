@@ -2,17 +2,17 @@
 version: '3.4'
 
 volumes:
-    datasci_opt:
+    easyenv_opt:
         external:
-            name: datasci_opt
+            name: easyenv_opt
 
 x-ambition-common:
     common:
-        &datasci-common
-        image: datasci
+        &easyenv-common
+        image: robdmc/easyenv:latest
         privileged: true
         volumes:
-           - datasci_opt:/opt:delegated
+           - easyenv_opt:/opt:delegated
            - ~:/host:delegated
            ##################################################################
            # Replace this with
@@ -21,7 +21,7 @@ x-ambition-common:
            ##################################################################
 services:
     shell:
-        <<: *datasci-common
+        <<: *easyenv-common
         command: /bin/bash
         ports:
             - "5555:5555"
@@ -30,7 +30,7 @@ services:
 
 
     notebook:
-        <<: *datasci-common
+        <<: *easyenv-common
         command: bash -c 'source ~/.bashrc && jupyter notebook --allow-root --ip 0.0.0.0 --port 9999 --NotebookApp.iopub_data_rate_limit=10000000000'
         ports:
             - "9999:9999"
