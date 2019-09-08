@@ -1,0 +1,36 @@
+# The version of docker compose to use
+version: '3.4'
+
+volumes:
+    datasci_opt:
+        external:
+            name: datasci_opt
+
+x-ambition-common:
+    common:
+        &datasci-common
+        image: datasci
+        privileged: true
+        volumes:
+           - datasci_opt:/opt:delegated
+           - ~:/host:delegated
+           ##################################################################
+           # Replace this with
+           # projects/path/on/your/computer:/root/projects
+           - ~/rob/repos:/root/projects
+           ##################################################################
+services:
+    shell:
+        <<: *datasci-common
+        command: /bin/bash
+        ports:
+            - "5555:5555"
+            - "8000:8000"
+            - "8888:8888"
+
+
+    notebook:
+        <<: *datasci-common
+        command: bash -c 'source ~/.bashrc && jupyter notebook --allow-root --ip 0.0.0.0 --port 9999 --NotebookApp.iopub_data_rate_limit=10000000000'
+        ports:
+            - "9999:9999"
