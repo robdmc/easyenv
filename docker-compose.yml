@@ -13,7 +13,10 @@ x-ambition-common:
         privileged: true
         volumes:
            - easyenv_opt:/opt:delegated
+           - ./container_files/ssh:/.ssh:delegated
+           - ./container_files/vim:/.vim:delegated
            - ~:/host:delegated
+           - ./build:/build:delegated
            ##################################################################
            # Replace this with
            # projects/path/on/your/computer:/root/projects
