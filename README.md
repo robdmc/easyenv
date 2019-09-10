@@ -8,3 +8,8 @@ One of the biggest challenges faced by those who teach data science is providing
 
 
 Think about making this image a zip file that can be dumped into a directory so that users don't have to install github on their pcs
+
+
+Directory stucture:  Suggest making `~/linux_projects` or `c:\linux_projects`
+Directory stucture:  Suggest making `~/easyenv` or `c:\easyenv`
+
