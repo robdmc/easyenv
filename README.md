@@ -3,7 +3,7 @@
 One of the biggest challenges faced by those who teach data science is providing reliable, reproducible environments for their students to work in.  [Anaconda](https://www.anaconda.com/) has done an amazing job of easing this pain, but reproducibility is presents a problem as each student will likely be running different versions of different operating systems that have been tweaked in unpredictable ways.  This project is an attempt to leverage [Docker](https://www.docker.com/products/docker-desktop) for creating reproducible linux enviroments for students regardless of their operating system and configuration.
 
 # Prerequisits
-* Operating systems:  **Windows 10 Pro (or later)** or **Mac-OSX** or **Linux**
+* Operating systems:  **Windows 10 Pro** or **Mac-OSX** or **Linux**
 * A [Docker Installation](https://www.docker.com/products/docker-desktop)
 
 
