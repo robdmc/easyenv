@@ -19,7 +19,6 @@ ENV LC_ALL en_US.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
 # Add files
-ADD ./files/environment.yml /root/environment.yml
 ADD ./files/.bash_profile /root/.bash_profile
 ADD ./files/.bashrc /root/.bashrc
 ADD ./files/.inputrc /root/.inputrc
@@ -32,9 +31,6 @@ touch /docker/container_files/root/.gitconfig && \
 touch /docker/container_files/root/.bash_history && \
 ln -s /docker/container_files/root/.gitconfig /root && \
 ln -s /docker/container_files/root/.bash_history /root
-
-
-
 
 # Prepare for conda intall
 RUN mkdir $HOME/.conda && \
