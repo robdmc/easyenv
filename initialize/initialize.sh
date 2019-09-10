@@ -6,7 +6,8 @@ compose_file="../docker-compose.yml"
 docker-compose -f $compose_file down || true
 
 # Install conda into the container
-bash update_environment.sh
+bash install_conda.sh
+bash build_environment.sh
 
 # Initialize ssh
 docker volume rm easyenv_ssh  || true
