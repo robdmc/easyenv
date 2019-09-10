@@ -13,6 +13,14 @@ Think about making this image a zip file that can be dumped into a directory so 
 Directory stucture:  Suggest making `~/linux_projects` or `c:\linux_projects`
 Directory stucture:  Suggest making `~/easyenv` or `c:\easyenv`
 
+## How it works
+Docker is a computer virtualization technology.  It allows you to use your personal computer as a host to any number of virtual computers (aka virtual machines).  In docker parlance, these virtual machines are referred to as "containers".  These containers are instantiated by loading information in a "docker image."  So basically, an image contains all the necessary instructions on how to boot up a container on your computer.  And it can do this in just a couple of seconds.
+
+So here is how this project works.  I used the latest stable Ubuntu operating system as a base for creating a docker image.  On top of this base, I have run a series of instructions, which you can [see here](https://github.com/robdmc/easyenv/blob/master/build/Dockerfile).  Don't worry if you don't understand this.  It's basically code to customize the standard ubuntu operating system to have tools that are useful to data science projects.
+
+I built this ubuntu image on my laptop and pushed it up to a public docker repository hosted on [docker-hub](https://hub.docker.com/r/robdmc/easyenv).  Your computer will download this image and use it to build a container in which you can run your data-science projects.
+
+
 # Windows Instructions
 * Install Docker
 * Allow host access
