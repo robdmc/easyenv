@@ -9,7 +9,7 @@ volumes:
         external:
             name: easyenv_ssh
 
-x-ambition-common:
+x-easyenv-common:
     common:
         &easyenv-common
         image: robdmc/easyenv:latest
