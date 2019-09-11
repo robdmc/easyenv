@@ -28,10 +28,10 @@ Or if you are on a mac, and your username is "rob", you might choose
 
 ```
 /Users/rob
-         └── linux_projects
-             ├── my_weather_analysis
-             ├── sports_betting_analysis
-             └── stock_portfolio_analysis
+       └── linux_projects
+           ├── my_weather_analysis
+           ├── sports_betting_analysis
+           └── stock_portfolio_analysis
 ```
 
 For the purpose of this documentation, we will be calling this your "project root" directory and the instructions below will assume project roots of  `c:\linux_projects` for Windows and `/Users/rob/linux_projects` for mac.  You are, of course, free to choose any other location you want for these.  Just adjust the instructions accordingly.
