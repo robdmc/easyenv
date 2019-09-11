@@ -11,7 +11,7 @@ Docker is a computer virtualization technology.  It allows you to use your perso
 
 I used the latest stable [Ubuntu operating system](https://hub.docker.com/_/ubuntu) as a base for creating a docker image.  On top of this base, I have run a series of instructions, which you can [see here](https://github.com/robdmc/easyenv/blob/master/build/Dockerfile).  Don't worry if you don't understand them.  They are basically code for customizing the standard ubuntu operating system to add useful data science tools.
 
-This image is maintained in a public docker repository hosted on [docker-hub](https://hub.docker.com/r/robdmc/easyenv).  Your computer will download this image and use it to build a container from which you can run your data-science projects.
+This image is maintained in a public docker repository hosted on [docker-hub](https://hub.docker.com/r/robdmc/easyenv).  During the installation process, your computer will download this image and use it to build a container from which you can run your data-science projects.
 
 # Configuring your computer before installation
 The docker container you will run on your computer will reference a main "project" directory.  It is a good idea to keep all of the files related to your work in the container under that directory.  So, for example, lets say you had three data-science projects.  One for weather, one for sports and one for stocks.  You might choose a directory structure that looks something like this on windows.
