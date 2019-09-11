@@ -6,13 +6,6 @@ One of the most common challenges faced by those who teach data science is provi
 * Operating systems:  **Windows 10 Pro** or **Mac-OSX**
 * A [Docker Installation](https://www.docker.com/products/docker-desktop)
 
-
-
-
-
-Directory stucture:  Suggest making `~/linux_projects` or `c:\linux_projects`
-Directory stucture:  Suggest making `~/easyenv` or `c:\easyenv`
-
 ## How it works
 Docker is a computer virtualization technology.  It allows you to use your personal computer as a host to any number of virtual computers (aka virtual machines).  In docker parlance, these virtual machines are referred to as "containers".  "Docker images" contain all the necessary instructions your computer needs to boot up a container on your computer in seconds.  This project leverages a custom-built docker image that can start up a container on your own computer with a powerful suite of data-science tools preinstalled.  Here is how it works.
 
@@ -44,10 +37,14 @@ Or if you are on a mac, and your username is "rob", you might choose
 For the purpose of this documentation, we will be calling this your "project root" directory and the instructions below will assume project roots of  `c:\linux_projects` for Windows and `/Users/rob/linux_projects` for mac.  You are, of course, free to choose any other location you want for these.  Just adjust the instructions accordingly.
 
 # Windows Installation
+Directory stucture:  Suggest making `~/easyenv` or `c:\easyenv`
+
+# Mac OSX Installation
+Directory stucture:  Suggest making `~/easyenv` or `c:\easyenv`
 
 
 
-# Windows Instructions
+# Delete this
 * Install Docker
 * Allow host access
 * Download zip file into `c:` drive and unzip to create `c:\easyenv`  (can use github if you prefer)
