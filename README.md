@@ -20,6 +20,28 @@ I used the latest stable [Ubuntu operating system](https://hub.docker.com/_/ubun
 
 This image is maintained in a public docker repository hosted on [docker-hub](https://hub.docker.com/r/robdmc/easyenv).  Your computer will download this image and use it to build a container from which you can run your data-science projects.
 
+# Configuring your computer before installation
+The docker container you will run on your computer will reference a main "project" directory.  It is a good idea to keep all of the files related to your work in the container under that directory.  So, for example, lets say you had three data-science projects.  One for weather, one for sports and one for stocks.  You might choose a directory structure that looks something like this on windows.
+
+```
+c:
+└── linux_projects
+    ├── my_weather_analysis
+    ├── sports_betting_analysis
+    └── stock_portfolio_analysis
+```
+
+Or if you are on a mac, and your username is "rob", you might choose
+
+```
+/Users/rob
+         └── linux_projects
+             ├── my_weather_analysis
+             ├── sports_betting_analysis
+             └── stock_portfolio_analysis
+```
+
+For the purpose of this documentation, we will be calling this your "project root" directory and the instructions below will assume project roots of  `c:\linux_projects` for Windows and `/Users/rob/linux_projects` for mac.  You are, of course, free to choose any other location you want for these.  Just adjust the instructions accordingly.
 
 # Windows Installation
 
