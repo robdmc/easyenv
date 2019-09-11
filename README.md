@@ -1,6 +1,6 @@
 # A Docker-Based Environment for Data Science
 
-One of the most common challenges faced by those who teach data science is providing reliable, reproducible environments for their students to work in.  [Anaconda](https://www.anaconda.com/) has done an amazing job of easing this pain, but the diversity caused by students running different operating systems with different configurations still causes problems.  This project is an attempt to leverage [Docker](https://www.docker.com/products/docker-desktop) for creating reproducible linux enviroments.
+One of the most common challenges faced by those who teach data science is providing reliable, reproducible environments for their students to work in.  [Anaconda](https://www.anaconda.com/) has done an amazing job of easing this pain, but the diversity caused by students running different operating systems with different configurations still causes problems.  This project is an attempt to leverage [Docker](https://www.docker.com/products/docker-desktop) for creating a reproducible linux environment that is guarenteed to be identical across any number of users.
 
 ## Prerequisits
 * Operating systems:  **Windows 10 Pro** or **Mac-OSX**
