@@ -3,11 +3,9 @@ version: '3.4'
 
 volumes:
     easyenv_opt:
-        external:
-            name: easyenv_opt
+        name: easyenv_opt
     easyenv_ssh:
-        external:
-            name: easyenv_ssh
+        name: easyenv_ssh
 
 x-easyenv-common:
     common:
