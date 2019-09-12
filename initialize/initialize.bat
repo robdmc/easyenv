@@ -12,9 +12,9 @@ rem Initialize ssh
 docker-compose -f %compose_file% run --rm shell ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa
 
 rem Make start scripts
-echo "docker-compose run --rm shell" > ..\start_shell.bat
-echo "docker-compose run --service-ports --rm notebook" > ..\start_notebook.bat
+echo docker-compose run --rm shell > ..\start_shell.bat
+echo pause >> ..\start_shell.bat
+echo docker-compose run --service-ports --rm notebook > ..\start_notebook.bat
+echo pause >> ..\start_notebook.bat
 
 pause
-
-
