@@ -30,9 +30,6 @@ RUN apt-get update && \
   locale-gen en_US.UTF-8
 
 
-# Add conda activation to end of .bashrc
-RUN echo "conda activate viz" >> ~/.bashrc
-
 # This directory will get overridden by volume mount
 # But this sets up simlink for gitconfig
 RUN mkdir -p /docker/container_files/root && \ 

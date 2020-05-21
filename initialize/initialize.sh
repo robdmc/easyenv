@@ -1,12 +1,15 @@
 #! /usr/bin/env bash
 
+# Put conda on the path
+export PATH="/opt/conda/bin:$PATH"
+
 compose_file="../docker-compose.yml"
 
 # Prepare volumes
-docker volume rm easyenv_opt  || true
+docker volume rm easyenv_opt 2>/dev/null || true 
 docker volume create easyenv_opt
 
-docker volume rm easyenv_ssh  || true
+docker volume rm easyenv_ssh 2>/dev/null || true 
 docker volume create easyenv_ssh
 
 

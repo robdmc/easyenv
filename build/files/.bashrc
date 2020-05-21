@@ -1,33 +1,20 @@
 export HISTCONTROL="ignoreboth:erasedups"
  # This entire file indented one line so history ignores it
 
- # Helper for starting a conda env
- viz.init () {
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "$HOME/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="$HOME/miniconda3/bin:$PATH"
-        fi
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
-    unset __conda_setup
-    # <<< conda initialize <<<
-
-
-    echo "Activating viz environment with"
-    echo ""
-    echo "    $ conda activate viz"
-    echo ""
-    echo "To deactivate an active environment, use"
-    echo ""
-    echo "    $ conda deactivate"
-    conda activate viz
- }
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
  # Helper for putting git branch on bash prompt
  parse_git_branch () {
@@ -81,8 +68,9 @@ export HISTCONTROL="ignoreboth:erasedups"
  # Set up terminal working preferences
  shopt -s histappend
  shopt -s extglob
- export EDITOR=nano
- export HISTFILE="$HOME/.bash_history"
+ set -o vi
+ export EDITOR=vim
+ export HISTFILE="/opt/.bash_history"
  export HISTFILESIZE=20000
  export HISTSIZE=20000
  export HISTIGNORE="clear:ls:pwd:history:hig:say"
@@ -94,7 +82,7 @@ export HISTCONTROL="ignoreboth:erasedups"
  fi
 
  # If history file doesn't exist, create it
- touch .bash_history
+ touch /opt/.bash_history
 
  # define some color escape codes
  grey='\[\033[1;30m\]'
@@ -121,6 +109,9 @@ export HISTCONTROL="ignoreboth:erasedups"
  alias less='less -R'
  alias dirs='dirs -v'
 
+ # Put conda on the path
+ # export PATH="/opt/conda/bin:$PATH"
+
  # Only alias the ls command if it doesn't fail
  ls --color=tty >&/dev/null
  if [ $? -eq 0 ]; then
@@ -145,4 +136,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-conda activate base
+conda activate viz 2>/dev/null || true

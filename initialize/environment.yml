@@ -68,3 +68,4 @@ dependencies:
         - tdigest
         - web-pdb
         - wrapt
+        - yfinance
