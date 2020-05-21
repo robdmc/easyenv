@@ -1,11 +1,11 @@
 # The version of docker compose to use
 version: '3.4'
 
-volumes:
-    easyenv_opt:
-        name: easyenv_opt
-    easyenv_ssh:
-        name: easyenv_ssh
+# volumes:
+#     easyenv_opt:
+#         name: easyenv_opt
+#     easyenv_ssh:
+#         name: easyenv_ssh
 
 x-easyenv-common:
     common:
@@ -13,8 +13,8 @@ x-easyenv-common:
         image: robdmc/easyenv:latest
         privileged: true
         volumes:
-           - easyenv_opt:/opt:delegated
-           - easyenv_ssh:/root/.ssh:delegated
+        #    - easyenv_opt:/opt:delegated
+        #    - easyenv_ssh:/root/.ssh:delegated
            - ./container_files/vim:/root/.vim:delegated
            - ~:/host:delegated
            - .:/docker:delegated

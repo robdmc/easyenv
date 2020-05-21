@@ -1,14 +1,5 @@
 # Pull from the base image
 FROM ubuntu:20.04
-RUN apt-get update
-RUN apt-get install -y python3-dev python3-pip
-
-RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get install -y tzdata
-RUN dpkg-reconfigure --frontend noninteractive tzdata
-
-RUN apt-get install -y vim curl tree wget bzip2 ca-certificates git nano ssh
 
 # Add files
 ADD ./files/.bash_profile /root/.bash_profile
@@ -16,52 +7,46 @@ ADD ./files/.bashrc /root/.bashrc
 ADD ./files/.inputrc /root/.inputrc
 ADD ./files/.vimrc /root/.vimrc
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm-256color
 
 
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+RUN apt-get update && \
+  apt-get install -y python3-dev python3-pip && \
+  apt-get install -y locales && \
+  ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \
+  apt-get install -y tzdata && \
+  dpkg-reconfigure --frontend noninteractive tzdata && \
+  apt-get install -y vim curl tree wget bzip2 ca-certificates git nano ssh && \
+  locale-gen en_US.UTF-8 &&\
+  wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+  /bin/bash ~/miniconda.sh -b -p /opt/conda && \
+  rm ~/miniconda.sh && \
+  ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
-RUN /bin/bash ~/miniconda.sh -b -p /opt/conda
+# set utf8 default locale lang
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
-RUN rm ~/miniconda.sh
-RUN ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+# Set the working directory
+WORKDIR /root
 
+# # Build conda environment
+# ADD ./files/environment.yml /root/environment.yml
+# RUN  /opt/conda/bin/conda update -n base -c defaults conda && \
+#   echo "conda activate viz" >> ~/.bashrc && \
+#   /opt/conda/bin/conda env update  --file /root/environment.yml && \
+#   rm ~/environment.yml
 
-# ############################################################
-# # Install required linux packages
-# ############################################################
-# RUN apt-get update --fix-missing && \
-#     apt-get -y install locales python-pip python-dev vim curl tree \
-#     wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 \
-#     git mercurial subversion nano ssh
+# This call out forces a cache miss for updating the env
+# This means that any changes to env file will always get pushed.
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
-# # set utf8 default locale lang
-# RUN locale-gen en_US.UTF-8
-# ENV LANG en_US.UTF-8
-# ENV LANGUAGE en_US:en
-# ENV LC_ALL en_US.UTF-8
+# This should only add updates from the last env build
+ADD ./files/environment.yml /root/environment.yml
+RUN  /opt/conda/bin/conda update -n base -c defaults conda && \
+  echo "conda activate viz" >> ~/.bashrc && \
+  /opt/conda/bin/conda env update  --file /root/environment.yml && \
+  rm ~/environment.yml
 
-# # Put conda on the path
-# ENV PATH /opt/conda/bin:$PATH
-
-# # Add files
-# ADD ./files/.bash_profile /root/.bash_profile
-# ADD ./files/.bashrc /root/.bashrc
-# ADD ./files/.inputrc /root/.inputrc
-# ADD ./files/.vimrc /root/.vimrc
-
-# # This directory will get overridden by volume mount
-# # But this sets up simlink for gitconfig
-# RUN mkdir -p /docker/container_files/root && \ 
-# touch /docker/container_files/root/.gitconfig && \
-# touch /docker/container_files/root/.bash_history && \
-# ln -s /docker/container_files/root/.gitconfig /root && \
-# ln -s /docker/container_files/root/.bash_history /root
-
-# # Prepare for conda intall
-# RUN mkdir $HOME/.conda && \
-#     echo "conda activate viz" >> ~/.bashrc
-
-
-# # Set the working directory
-# WORKDIR /root

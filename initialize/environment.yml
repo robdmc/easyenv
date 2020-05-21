@@ -37,6 +37,7 @@ dependencies:
         - fuzzypicker
         - gspread
         - holoviews
+        - inflection
         - hvplot
         - joblib
         - jupyter
@@ -46,6 +47,7 @@ dependencies:
         - oauth2client
         - pandashells[full]
         - patsy
+        - pdbpp
         - pdvega
         - psutil
         - pymc3
@@ -59,3 +61,4 @@ dependencies:
         - tdigest
         - web-pdb
         - wrapt
+        - yfinance
