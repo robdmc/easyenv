@@ -22,6 +22,18 @@ unset __conda_setup
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/( \1 )/'
  }
 
+ # Function to source all files in a bash_hooks directory
+ function source_bash_hooks () { 
+     set +o history
+     if compgen -G "/project/bash_hooks/*.sh" > /dev/null; then
+         for hook in `ls /project/bash_hooks/*.sh`
+         do
+             source_if_exists $hook
+         done
+     fi
+     set -o history
+ }
+
  # Determine the way this shell is being run
  if [[ -n $PS1 ]]; then
      : # These are executed only for interactive shells
@@ -137,3 +149,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 conda activate viz 2>/dev/null || true
+
+# Run any bash_hooks
+source_bash_hooks

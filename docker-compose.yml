@@ -19,12 +19,7 @@ x-easyenv-common:
            - easyenv_ssh:/root/.ssh:delegated
            - ./container_files/vim:/root/.vim:delegated
            - ~:/host:delegated
-           - .:/docker:delegated
-           ##################################################################
-           # Replace this with
-           # projects/path/on/your/computer:/root/projects
-           - ~/rob/repos:/root/projects
-           ##################################################################
+           - .:/project:delegated
 services:
     shell:
         <<: *easyenv-common
